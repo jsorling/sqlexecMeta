@@ -4,9 +4,21 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Version>0.8.0.0</Version>
         <AssemblyName>Sorling.SqlExecMeta</AssemblyName>
         <RootNamespace>Sorling.SqlExecMeta</RootNamespace>
+        <PackageId>Sorling.SqlExecMeta</PackageId>
+        <PackageIcon>NugetLogo.png</PackageIcon>
+        <PackageTags>Sql Server Meta Data</PackageTags>
+        <Version>0.8.0.0</Version>
+        <Authors>jsorling</Authors>
+        <Company>Sorling Systems</Company>
+        <Copyright>Sorling Systems @year</Copyright>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryType>GIT</RepositoryType>
+        <PackageProjectUrl>https://github.com/jsorling/sqlexecMeta</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/jsorling/sqlexecMeta</RepositoryUrl>
+        <Description>Sql meta data</Description>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -18,6 +30,20 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Sorling.SqlExec" Version="0.1.3235.782" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="NugetLogo.png">
+            <PackagePath>\</PackagePath>
+            <Pack>True</Pack>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\..\README.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
     </ItemGroup>
 
 </Project>
