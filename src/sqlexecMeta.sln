@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sqlexecMetaLib", "sqlexecMetaLib\sqlexecMetaLib.csproj", "{637B8311-B537-45E8-8BD4-1C23BAE3B96E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F739F85F-6DDC-431A-A76C-345DE6AAC03D}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sqlexecMetaTests", "sqlexecMetaTests\sqlexecMetaTests.csproj", "{A6BAFE7A-D4F6-4D16-8563-70D790E581AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{637B8311-B537-45E8-8BD4-1C23BAE3B96E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{637B8311-B537-45E8-8BD4-1C23BAE3B96E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{637B8311-B537-45E8-8BD4-1C23BAE3B96E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{637B8311-B537-45E8-8BD4-1C23BAE3B96E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6BAFE7A-D4F6-4D16-8563-70D790E581AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6BAFE7A-D4F6-4D16-8563-70D790E581AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6BAFE7A-D4F6-4D16-8563-70D790E581AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6BAFE7A-D4F6-4D16-8563-70D790E581AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA280035-75F1-4829-9658-32E0D4685950}
+	EndGlobalSection
+EndGlobal
