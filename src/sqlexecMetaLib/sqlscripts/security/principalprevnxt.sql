@@ -12,16 +12,17 @@ insert into @groups(name, id) values
     , ('ExtGroupsAzureAD', 'X');
 
 with pilist as (
-    select lag(pi.Name) over (order by pi.Name) PreviousId
-        , lag(pi.GroupName) over (order by pi.Name) PreviousGroup
+    select lag(pi.Name) over (order by pi.Name collate Latin1_General_100_BIN2) PreviousId
+        , lag(pi.GroupName) over (order by pi.Name  collate Latin1_General_100_BIN2) PreviousGroup
         , pi.Name CurrentId
-        , lead(pi.Name) over (order by pi.Name) NextId
-        , lead(pi.GroupName) over (order by pi.Name) NextGroup
+        , lead(pi.Name) over (order by pi.Name collate Latin1_General_100_BIN2) NextId
+        , lead(pi.GroupName) over (order by pi.Name collate Latin1_General_100_BIN2) NextGroup
     from (
-        select g.name + '.' + p.name [Name], g.name [GroupName]
+        select g.name collate Latin1_General_100_BIN2 + '.' + p.name  collate Latin1_General_100_BIN2 [Name]
+            , g.name [GroupName]
         from sys.database_principals p 
         inner join @groups g on g.id = p.type collate Latin1_General_100_BIN2
-        where (( @typetext is not null and g.name = @typetext ) or @typetext is null)
+        where (( @typetext is not null and g.name = @typetext) or @typetext is null)
     ) pi
 ) 
 select l.PreviousId
@@ -30,4 +31,4 @@ select l.PreviousId
     , l.NextId
     , l.NextGroup
 from pilist l
-where l.CurrentId = @current
+where l.CurrentId = @current collate Latin1_General_100_BIN2

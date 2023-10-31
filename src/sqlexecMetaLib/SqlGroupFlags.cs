@@ -21,5 +21,14 @@ public enum SqlGroupFlags : long
    WinUsers = 65536,
    ExtGroupsAzureAD = 131072,
    Triggers = 262144,
+   Principals = DbRoles
+      | AppRoles
+      | ExtUsersAzureAD
+      | UserCertificates
+      | WinGroups
+      | UserAsymetricKeys
+      | SqlUsers
+      | WinUsers
+      | ExtGroupsAzureAD,
    Objects = ~0
 }
