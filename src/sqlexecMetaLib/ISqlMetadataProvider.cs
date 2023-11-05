@@ -29,7 +29,7 @@ public interface ISqlMetadataProvider
 
    public Task<IEnumerable<SqlTableTypeDefCmd.Result>> GetSqlTableTypeAsync(string objectName);
 
-   public Task<SqlObjectPrevNxt?> GetSqlObjectPrevNxtAsync(string currentName, string currentType, string? schema = null
+   public Task<SqlObjectPrevNxt?> GetSqlObjectPrevNxtAsync(string currentName, SqlGroupFlags currentType, string? schema = null
       , SqlGroupFlags filter = SqlGroupFlags.Objects);
 
    public Task<IEnumerable<SqlScriptDescribUndeclaredParamsCmd.Result>> GetSqlUndeclaredParamsAsync(string tSql);
@@ -54,7 +54,7 @@ public interface ISqlMetadataProvider
 
    public Task<IEnumerable<SqlPrincipalListItem>> GetSqlPrincipalsAsync(string? typetext);
 
-   public Task<SqlPrincipalPrevNxt?> GetSqlPrincipalPrevNxtAsync(string current, string? type);
+   public Task<SqlPrincipalPrevNxt?> GetSqlPrincipalPrevNxtAsync(string current, SqlGroupFlags? type);
 
    public Task<SqlPrincipalListItem?> GetSqlPrincipalAsync(string typetext, string name);
 

@@ -5,7 +5,7 @@ with triggerlist as (
         , lead(tr.Name) over (order by tr.Name) NextId
         , lead(tr.GroupName) over (order by tr.Name) NextGroup
     from (
-        select s.name + '.' + t.name [Name], 'triggers' [GroupName]
+        select s.name + '.' + t.name [Name], cast(262144 as bigint) [GroupName]
         from sys.triggers t
         inner join sys.objects o on o.object_id = t.parent_id
         inner join sys.schemas s on s.schema_id = o.schema_id

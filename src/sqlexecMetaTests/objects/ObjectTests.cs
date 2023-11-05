@@ -1,4 +1,5 @@
-﻿using Sorling.SqlExecMeta.objects;
+﻿using Sorling.SqlExecMeta;
+using Sorling.SqlExecMeta.objects;
 
 namespace sqlexecMetaTests.objects;
 
@@ -15,7 +16,7 @@ public class ObjectTests
    [TestMethod]
    public void GetPrevNxt() {
       SqlObjectPrevNxt? res = TestsInitialize.SqlMetadataProvider.GetSqlObjectPrevNxtAsync(
-         "sqmtest.table1", "tables").Result;
+         "sqmtest.table1", SqlGroupFlags.Tables).Result;
       Assert.IsTrue(res is not null);
    }
 }

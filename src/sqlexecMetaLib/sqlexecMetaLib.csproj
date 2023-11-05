@@ -29,7 +29,7 @@
         <EmbeddedResource Include="sqlscripts\**\*" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Sorling.SqlExec" Version="0.8.1.3" />
+        <PackageReference Include="Sorling.SqlExec" Version="0.8.2.4" />
     </ItemGroup>
 
     <ItemGroup>

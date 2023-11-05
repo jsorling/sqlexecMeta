@@ -6,7 +6,7 @@ with typelist as (
         , lead(ty.GroupName) over (order by ty.Name) NextGroup
     from (
         select s.name + '.' + t.name [Name]
-            , case when t.is_table_type = 1 then 'tabletypes' else 'types' end [GroupName]
+            , case when t.is_table_type = 1 then cast(16 as bigint) else cast(16 as bigint) end [GroupName]
         from sys.types t 
         inner join sys.schemas s on s.schema_id = t.schema_id
         where (( @schema is not null and s.name = @schema ) or @schema is null)

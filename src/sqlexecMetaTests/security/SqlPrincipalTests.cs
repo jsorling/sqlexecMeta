@@ -1,4 +1,5 @@
-﻿using Sorling.SqlExecMeta.security;
+﻿using Sorling.SqlExecMeta;
+using Sorling.SqlExecMeta.security;
 
 namespace sqlexecMetaTests.security;
 
@@ -16,7 +17,7 @@ public class SqlPrincipalTests
    public void GetPrincipalPrevNxt() {
       SqlPrincipalPrevNxt? pn = TestsInitialize.SqlMetadataProvider.GetSqlPrincipalPrevNxtAsync("SqlUsers.INFORMATION_SCHEMA", null).Result;
       Assert.IsTrue(pn != null);
-      pn = TestsInitialize.SqlMetadataProvider.GetSqlPrincipalPrevNxtAsync("SqlUsers.INFORMATION_SCHEMA", "SqlUsers").Result;
+      pn = TestsInitialize.SqlMetadataProvider.GetSqlPrincipalPrevNxtAsync("SqlUsers.INFORMATION_SCHEMA", SqlGroupFlags.SqlUsers).Result;
       Assert.IsTrue(pn != null);
    }
 

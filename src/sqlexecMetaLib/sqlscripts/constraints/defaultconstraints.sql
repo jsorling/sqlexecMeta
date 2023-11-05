@@ -15,7 +15,7 @@ select d.name [Name]
 	, d.definition
 	, d.is_system_named
 	, 'defaultconstraints' [Group]
-	, cast(128 as int) [GroupFlag]
+	, cast(128 as bigint) [GroupFlag]
 	, db_name() [DBName]
 	, object_schema_name(d.parent_object_id) [ParentSchema]
 	, object_name(d.parent_object_id) [ParentName]

@@ -4,7 +4,7 @@ public interface IPrevNxtSqlItem
 {
    public string? PreviousId { get; }
 
-   public string? PreviousGroup { get; }
+   public SqlGroupFlags? PreviousGroup { get; }
 
    public string? PreviousSchema { get; }
 
@@ -14,7 +14,7 @@ public interface IPrevNxtSqlItem
 
    public string? NextId { get; }
 
-   public string? NextGroup { get; }
+   public SqlGroupFlags? NextGroup { get; }
 
    public string? NextSchema { get; }
 

@@ -3,7 +3,7 @@ using Sorling.SqlExecMeta.helpers;
 
 namespace Sorling.SqlExecMeta.objects.triggers;
 
-public record SqlTriggerPrevNxt(string? PreviousId, string? PreviousGroup, string CurrentId, string? NextId, string? NextGroup)
+public record SqlTriggerPrevNxt(string? PreviousId, SqlGroupFlags? PreviousGroup, string CurrentId, string? NextId, SqlGroupFlags? NextGroup)
    : SqlExecBaseResult, IPrevNxtSqlItem
 {
    public string? PreviousSchema => SqlIdentifierHelper.GetSchema(PreviousId);

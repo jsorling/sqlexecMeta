@@ -5,7 +5,7 @@ with checklist as (
         , lead(ch.Name) over (order by ch.Name) NextId
         , lead(ch.GroupName) over (order by ch.Name) NextGroup
     from (
-        select s.name + '.' + c.name [Name], 'checkconstraints' [GroupName]
+        select s.name + '.' + c.name [Name], cast(256 as bigint) [GroupName]
         from sys.check_constraints c 
         inner join sys.schemas s on s.schema_id = c.schema_id
         where (( @schema is not null and s.name = @schema ) or @schema is null)

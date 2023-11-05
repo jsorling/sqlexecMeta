@@ -45,7 +45,7 @@ public class SqlMetadataProvider : ISqlMetadataProvider
    public async Task<IEnumerable<SqlTableTypeDefCmd.Result>> GetSqlTableTypeAsync(string objectName)
       => await _sqlExecRunner.QueryAsync<SqlTableTypeDefCmd.Result, SqlTableTypeDefCmd>(new(objectName));
 
-   public async Task<SqlObjectPrevNxt?> GetSqlObjectPrevNxtAsync(string currentName, string currentType, string? schema = null
+   public async Task<SqlObjectPrevNxt?> GetSqlObjectPrevNxtAsync(string currentName, SqlGroupFlags currentType, string? schema = null
       , SqlGroupFlags filter = SqlGroupFlags.Objects)
      => await _sqlExecRunner.QueryFirstRowAsync<SqlObjectPrevNxt, SqlObjectPrevNxtCmd>(new(currentName, currentType, schema, filter));
 
@@ -82,7 +82,7 @@ public class SqlMetadataProvider : ISqlMetadataProvider
    public async Task<IEnumerable<SqlPrincipalListItem>> GetSqlPrincipalsAsync(string? typetext)
       => await _sqlExecRunner.QueryAsync<SqlPrincipalListItem, SqlPrincipalListCmd>(new(typetext, null));
 
-   public async Task<SqlPrincipalPrevNxt?> GetSqlPrincipalPrevNxtAsync(string current, string? type)
+   public async Task<SqlPrincipalPrevNxt?> GetSqlPrincipalPrevNxtAsync(string current, SqlGroupFlags? type)
       => await _sqlExecRunner.QueryFirstRowAsync<SqlPrincipalPrevNxt, SqlPrincipalPrevNxtCmd>(new(current, type));
 
    public async Task<SqlPrincipalListItem?> GetSqlPrincipalAsync(string typetext, string name)

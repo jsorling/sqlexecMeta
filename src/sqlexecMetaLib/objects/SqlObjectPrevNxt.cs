@@ -3,12 +3,12 @@ using Sorling.SqlExecMeta.helpers;
 
 namespace Sorling.SqlExecMeta.objects;
 
-public record SqlObjectPrevNxt(string? PrevObj, string? PrevType, string CurrentObjFullName, string CurrentType, string? NxtObj
-   , string? NxtType) : SqlExecBaseResult, IPrevNxtSqlItem
+public record SqlObjectPrevNxt(string? PrevObj, SqlGroupFlags? PrevType, string CurrentObjFullName, SqlGroupFlags CurrentType, string? NxtObj
+   , SqlGroupFlags? NxtType) : SqlExecBaseResult, IPrevNxtSqlItem
 {
    public string? PreviousId => PrevObj;
 
-   public string? PreviousGroup => PrevType;
+   public SqlGroupFlags? PreviousGroup => PrevType;
 
    public string? PreviousSchema => SqlIdentifierHelper.GetSchema(PrevObj);
 
@@ -18,7 +18,7 @@ public record SqlObjectPrevNxt(string? PrevObj, string? PrevType, string Current
 
    public string? NextId => NxtObj;
 
-   public string? NextGroup => NxtType;
+   public SqlGroupFlags? NextGroup => NxtType;
 
    public string? NextSchema => SqlIdentifierHelper.GetSchema(NxtObj);
 
