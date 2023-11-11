@@ -22,6 +22,7 @@ public enum SqlGroupFlags : long
    ExtGroupsAzureAD = 131072,
    Triggers = 262144,
    Schemas = 524288,
+   Scripts = 1048576,
    Principals = DbRoles
       | AppRoles
       | ExtUsersAzureAD
@@ -31,5 +32,9 @@ public enum SqlGroupFlags : long
       | SqlUsers
       | WinUsers
       | ExtGroupsAzureAD,
+   TopLevel = Tables
+      | Views
+      | StoredProcedures
+      | Functions,
    Objects = ~0
 }
