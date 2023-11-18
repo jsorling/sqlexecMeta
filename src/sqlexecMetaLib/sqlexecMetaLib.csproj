@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AssemblyName>Sorling.SqlExecMeta</AssemblyName>
@@ -9,7 +9,7 @@
         <PackageId>Sorling.SqlExecMeta</PackageId>
         <PackageIcon>NugetLogo.png</PackageIcon>
         <PackageTags>Sql Server Meta Data</PackageTags>
-        <Version>0.8.1.0</Version>
+        <Version>0.9.1.0</Version>
         <Authors>jsorling</Authors>
         <Company>Sorling Systems</Company>
         <Copyright>Sorling Systems @year</Copyright>
@@ -29,7 +29,7 @@
         <EmbeddedResource Include="sqlscripts\**\*" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Sorling.SqlExec" Version="0.8.2.4" />
+        <PackageReference Include="Sorling.SqlExec" Version="0.9.1.5" />
     </ItemGroup>
 
     <ItemGroup>
