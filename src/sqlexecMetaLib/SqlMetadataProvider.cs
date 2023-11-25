@@ -102,4 +102,7 @@ public class SqlMetadataProvider : ISqlMetadataProvider
 
    public async Task<IEnumerable<SqlDefaultConstraintListItem>> GetDefaultContraintsForObjectAsync(string name)
       => await _sqlExecRunner.QueryAsync<SqlDefaultConstraintListItem, SqlDefaultConstraintListForObjectCmd>(new(name));
+
+   public async Task<IEnumerable<SqlCheckConstraintListItem>> GetCheckContraintsForObjectAsync(string name)
+      => await _sqlExecRunner.QueryAsync<SqlCheckConstraintListItem, SqlCheckConstraintListForObjectCmd>(new(name));
 }

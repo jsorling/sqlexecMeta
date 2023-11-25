@@ -55,7 +55,8 @@ GO
 
 create table sqmtest.table2(
     astring nvarchar ( 65 ) constraint df_table2_astring default '123',
-    anint int
+    anint int,
+    constraint ch_table2_anint check (anint > 0)
 )
 GO
 

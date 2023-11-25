@@ -67,4 +67,6 @@ public interface ISqlMetadataProvider
    public Task<SqlTriggerItem?> GetTriggerAsync(string schema, string name);
 
    public Task<SqlTriggerPrevNxt?> GetTriggerPrevNxtAsync(string current, string? schema);
+
+   public Task<IEnumerable<SqlCheckConstraintListItem>> GetCheckContraintsForObjectAsync(string name);
 }

@@ -11,4 +11,11 @@ public class SqlCheckConstraintsTests
          = TestsInitialize.SqlMetadataProvider.GetCheckContraintsAsync(null).Result;
       Assert.IsTrue(cc.Any());
    }
+
+   [TestMethod]
+   public void ListCheckConstraintsForObject() {
+      IEnumerable<SqlCheckConstraintListItem> cc
+         = TestsInitialize.SqlMetadataProvider.GetCheckContraintsForObjectAsync("sqmtest.table2").Result;
+      Assert.IsTrue(cc.Any());
+   }
 }
