@@ -11,4 +11,11 @@ public class SqlDefaultConstraintsTests
          = TestsInitialize.SqlMetadataProvider.GetDefaultContraintsAsync(null).Result;
       Assert.IsTrue(dc.Any());
    }
+
+   [TestMethod]
+   public void ListDefaultConstraintsForObject() {
+      IEnumerable<SqlDefaultConstraintListItem> dc
+         = TestsInitialize.SqlMetadataProvider.GetDefaultContraintsForObjectAsync("sqmtest.table2").Result;
+      Assert.IsTrue(dc.Any());
+   }
 }

@@ -99,4 +99,7 @@ public class SqlMetadataProvider : ISqlMetadataProvider
 
    public async Task<SqlTriggerPrevNxt?> GetTriggerPrevNxtAsync(string current, string? schema)
       => await _sqlExecRunner.QueryFirstRowAsync<SqlTriggerPrevNxt, SqlTriggersPrevNxtCmd>(new(current, schema));
+
+   public async Task<IEnumerable<SqlDefaultConstraintListItem>> GetDefaultContraintsForObjectAsync(string name)
+      => await _sqlExecRunner.QueryAsync<SqlDefaultConstraintListItem, SqlDefaultConstraintListForObjectCmd>(new(name));
 }

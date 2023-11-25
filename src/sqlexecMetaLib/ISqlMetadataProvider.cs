@@ -36,6 +36,8 @@ public interface ISqlMetadataProvider
 
    public Task<IEnumerable<SqlDefaultConstraintListItem>> GetDefaultContraintsAsync(string? schema);
 
+   public Task<IEnumerable<SqlDefaultConstraintListItem>> GetDefaultContraintsForObjectAsync(string name);
+
    public Task<IEnumerable<SqlCheckConstraintListItem>> GetCheckContraintsAsync(string? schema);
 
    public Task<IEnumerable<SqlTypeListItem>> GetSqlTypesAsync(string? schema);

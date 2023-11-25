@@ -49,6 +49,16 @@ create table sqmtest.table1(
 )
 GO
 
+if object_id('sqmtest.table2', 'U') is not null
+    drop table sqmtest.table2
+GO
+
+create table sqmtest.table2(
+    astring nvarchar ( 65 ) constraint df_table2_astring default '123',
+    anint int
+)
+GO
+
 create view sqmtest.view1 as select anint + 2 plustwo from sqmtest.table1
 GO
 
