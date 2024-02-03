@@ -23,6 +23,9 @@ public enum SqlGroupFlags : long
    Triggers = 262144,
    Schemas = 524288,
    Scripts = 1048576,
+   PrimaryKeys = 2097152,
+   ForeignKeys = 4194304,
+   UniqueKeys = 8388608,
    Principals = DbRoles
       | AppRoles
       | ExtUsersAzureAD

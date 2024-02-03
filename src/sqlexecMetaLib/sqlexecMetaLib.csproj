@@ -29,7 +29,7 @@
         <EmbeddedResource Include="sqlscripts\**\*" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Sorling.SqlExec" Version="0.9.1.5" />
+        <PackageReference Include="Sorling.SqlExec" Version="0.9.1.6" />
     </ItemGroup>
 
     <ItemGroup>
@@ -44,6 +44,10 @@
             <Pack>True</Pack>
             <PackagePath>\</PackagePath>
         </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="constraints\keys\" />
     </ItemGroup>
 
 </Project>
