@@ -28,4 +28,6 @@ public class Sql2CSharp : ISql2CodeMapper
 
    public string MapSql2CodeVar(ISqlFieldNParamDefinition sqlFieldNParam)
       => $"{sqlFieldNParam.GetNetTypeDeclaration()} {GetProperFieldName(sqlFieldNParam)}";
+
+   public string MapSql2ProperName(string name) => GetProperName(name) ?? name;
 }
