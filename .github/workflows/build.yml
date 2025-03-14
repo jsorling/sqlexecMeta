@@ -4,37 +4,33 @@ on:
 env:
   NUGET_PACKAGE_PATH: ./published
   CONFIGURATION: Release
-  DOTNET_CORE_VERSION: 8.0.x
+  DOTNET_CORE_VERSION: 9.0.x
   WORKING_DIRECTORY: .
   PS_SOURCE_URL: "https://raw.githubusercontent.com/jsorling/miscscripts/main/github/actions"
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4.2.2
     - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v3.3.1
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
     - name: Set build info
       run: '& iex ((New-Object System.Net.WebClient).DownloadString("$env:PS_SOURCE_URL/buildinfo.ps1"))'
       shell: pwsh
-    - name: Create nuget.config
-      run: dotnet new nugetconfig
-    - name: Set nuget add azure public feed
-      run: >
-        dotnet nuget add
-        source https://pkgs.dev.azure.com/sorling/PublicFeed/_packaging/PublicFeed/nuget/v3/index.json
-        -n azurepublic
-        --configfile nuget.config
+    - name: Restore
+      run: dotnet restore src/sqlexecMetaLib/sqlexecMetaLib.csproj
     - name: Pack
-      run: >
-        dotnet pack
-        src/sqlexecMetaLib/sqlexecMetaLib.csproj
-        --configuration ${{ env.CONFIGURATION }}
-        --output "${{ env.NUGET_PACKAGE_PATH }}"
+      run: dotnet pack src/sqlexecMetaLib/sqlexecMetaLib.csproj
+       --configuration ${{ env.CONFIGURATION }} 
+       --no-restore
+       --output "${{ env.NUGET_PACKAGE_PATH }}"
     - name: Publish Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4.6.1
       with:
         name: nugetpkg
         path: ${{ env.NUGET_PACKAGE_PATH }}
+    - name: List dir
+      run: gci -Recurse | Get-Item | Resolve-Path -Relative
+      shell: pwsh

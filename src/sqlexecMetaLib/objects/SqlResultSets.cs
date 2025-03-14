@@ -4,15 +4,13 @@ using Sorling.SqlExec.runner;
 using Sorling.SqlExecMeta.objects.extensions;
 using Sorling.SqlExecMeta.objects.storedprocedures;
 using System.Data;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace Sorling.SqlExecMeta.objects;
 
-public class SqlResultSets
+public class SqlResultSets(string connectionString)
 {
-   private readonly string _connectionString;
-
-   public SqlResultSets(string connectionString) => _connectionString = connectionString;
+   private readonly string _connectionString = connectionString;
 
    private record EmptyCmd() : SqlExecBaseCommand
    {
@@ -30,7 +28,7 @@ public class SqlResultSets
    }
 
    public async Task<(Dictionary<int, IEnumerable<SqlResultSetColumn>> ResultSets, string QuerySql)> GetResultSetsAsync(string sql) {
-      Dictionary<int, IEnumerable<SqlResultSetColumn>> resultsets = new();
+      Dictionary<int, IEnumerable<SqlResultSetColumn>> resultsets = [];
 
       using SqlConnection con = new(_connectionString);
       using SqlCommand cmd = con.SqlExecCreatePreparedCommand(new EmptyCmd());

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AssemblyName>Sorling.SqlExecMeta</AssemblyName>
@@ -29,7 +29,7 @@
         <EmbeddedResource Include="sqlscripts\**\*" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Sorling.SqlExec" Version="0.9.1.7" />
+        <PackageReference Include="Sorling.SqlExec" Version="0.9.1.13" />
     </ItemGroup>
 
     <ItemGroup>
