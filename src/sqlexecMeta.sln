@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F739F85F-6DDC-431A-A76C-345DE6AAC03D}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		nuget.config = nuget.config
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sqlexecMetaTests", "sqlexecMetaTests\sqlexecMetaTests.csproj", "{A6BAFE7A-D4F6-4D16-8563-70D790E581AE}"

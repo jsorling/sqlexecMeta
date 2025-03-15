@@ -31,6 +31,4 @@ jobs:
       with:
         name: nugetpkg
         path: ${{ env.NUGET_PACKAGE_PATH }}
-    - name: List dir
-      run: gci -Recurse | Get-Item | Resolve-Path -Relative
-      shell: pwsh
+    
