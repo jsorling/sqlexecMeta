@@ -4,12 +4,13 @@ on:
 env:
   NUGET_PACKAGE_PATH: ./published
   CONFIGURATION: Release
-  DOTNET_CORE_VERSION: 8.0.x
+  DOTNET_CORE_VERSION: 9.0.x
   WORKING_DIRECTORY: .
   PS_SOURCE_URL: "https://raw.githubusercontent.com/jsorling/miscscripts/main/github/actions"
+  NUGET_SOURCE: sorling.devazure.public
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest  
     steps:
     - uses: actions/checkout@v4.2.2
     - name: Setup .NET SDK
@@ -19,49 +20,25 @@ jobs:
     - name: Set build info
       run: '& iex ((New-Object System.Net.WebClient).DownloadString("$env:PS_SOURCE_URL/buildinfo.ps1"))'
       shell: pwsh
-    - name: Create nuget.config
-      run: dotnet new nugetconfig
-    - name: Set nuget add azure public feed
-      run: >
-        dotnet nuget add
-        source https://pkgs.dev.azure.com/sorling/PublicFeed/_packaging/PublicFeed/nuget/v3/index.json
-        -n azurepublic
-        --configfile nuget.config
+    - name: Restore
+      run: dotnet restore src/sqlexecMetaLib/sqlexecMetaLib.csproj
     - name: Pack
-      run: >
-        dotnet pack
-        src/sqlexecMetaLib/sqlexecMetaLib.csproj
-        --configuration ${{ env.CONFIGURATION }}
+      run: dotnet pack src/sqlexecMetaLib/sqlexecMetaLib.csproj
+        --configuration ${{ env.CONFIGURATION }} 
+        --no-restore
         --output "${{ env.NUGET_PACKAGE_PATH }}"
     - name: Publish Artifacts
       uses: actions/upload-artifact@v4.6.1
       with:
         name: nugetpkg
         path: ${{ env.NUGET_PACKAGE_PATH }}
-  deploy:
-  # https://learn.microsoft.com/en-us/azure/devops/artifacts/quickstarts/github-actions?view=azure-devops
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-    - name: Download artifact from build job
-      uses: actions/download-artifact@v3
-      with:
-        name: nugetpkg
-        path: ${{ env.NUGET_PACKAGE_PATH }}
-    - name: Create nuget.config
-      run: dotnet new nugetconfig
-    - name: Set nuget add azure public feed
-      run: >
-        dotnet nuget add
-        source https://pkgs.dev.azure.com/sorling/PublicFeed/_packaging/PublicFeed/nuget/v3/index.json
-        -n azurepublic
-        --configfile nuget.config
-        -u jsorling
-        -p ${{ secrets.azpublicfeedpat }}
+    - name: Update nuget source
+      run: dotnet nuget update source ${{ env.NUGET_SOURCE }} 
+        --username "jsorling" 
+        --password ${{ secrets.AZPUBLICFEEDPAT }} 
         --store-password-in-clear-text
     - name: Push nuget
-      run: >
-        dotnet nuget push
+      run: dotnet nuget push 
+        --source ${{ env.NUGET_SOURCE }} 
+        --api-key AZ 
         "${{ env.NUGET_PACKAGE_PATH }}/**/*.nupkg"
-        --source azurepublic
-        --api-key AZ
