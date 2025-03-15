@@ -12,11 +12,9 @@ using Sorling.SqlExecMeta.types;
 
 namespace Sorling.SqlExecMeta;
 
-public class SqlMetadataProvider : ISqlMetadataProvider
+public class SqlMetadataProvider(ISqlExecRunner sqlExecRunner) : ISqlMetadataProvider
 {
-   private readonly ISqlExecRunner _sqlExecRunner;
-
-   public SqlMetadataProvider(ISqlExecRunner sqlExecRunner) => _sqlExecRunner = sqlExecRunner;
+   private readonly ISqlExecRunner _sqlExecRunner = sqlExecRunner;
 
    public async Task<IEnumerable<SqlFunctionDefCmd.Result>> GetSqlFunctionAsync(string schema, string objectName)
       => await _sqlExecRunner.QueryAsync<SqlFunctionDefCmd.Result, SqlFunctionDefCmd>(new(schema, objectName));
